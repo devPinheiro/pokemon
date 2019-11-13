@@ -1,32 +1,26 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div class="w-full max-w-screen-xl pt-32  lg:pt-40 mx-auto px-6 sm:pr-20 sm:pl-20  lg:pr-32 lg:pl-32 block mb-4 bg-gray-10 ">
+                  <div class="w-full xl:flex lg:flex ">
+                 
+                    <div class="block  xl:flex lg:flex text-center lg:text-left text-dark  ">
+                        <div class="xl:mt-18 xl:pr-32  lg:mt-18 lg:pr-32 ">
+                          <h2 class="font-Montserrat font-thin  sm:text-lg md:text-xl lg:text-5xl pt-4 pb-2 text-dark-400 xl:pr-16 ">
+                            Hi, I'm <span class="font-medium">Samuel</span>
+                            </h2>
+                            <h1 class="font-Montserrat font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-xl ">
+                            Developer & Designer
+                            </h1>
+
+                            <p class="pt-10">I enjoy building digital products  with great user experience.  I’m currently available
+to build your next big thing.</p>
+                        </div>
+                    </div>
+                    <div class="block xl:flex lg:flex text-center lg:text-left hidden lg:show pt-8 m-auto  ">
+                     
+                     <!--  -->
+                    </div>
+                  </div>
+   
   </div>
 </template>
 
