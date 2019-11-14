@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
+import { Vuelidate } from 'vuelidate';
 import '../src/assets/css/tailwind.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(Vuelidate);
 
-new Vue({
+new Vue({ 
   render: h => h(App),
 }).$mount('#app')

@@ -15,7 +15,7 @@ module.exports = {
             '10': '#f5f5f5'
         },
         blue: {
-          '45': '#0CAADC'
+          '500': '#0CAADC'
         }
       },
       height: {
