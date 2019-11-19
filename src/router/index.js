@@ -29,7 +29,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // check localstorage for authenticated user
-    if (localStorage.getItem("pokermonUser") === null) {
+    if (!localStorage.getItem("pokermonUser")) {
       next({
         name: "home"
       });

@@ -1,6 +1,6 @@
 <template>
   <div id="flex ">
-    <router-view />
+    <router-view :key="$route.path" />
   </div>
 </template>
 
