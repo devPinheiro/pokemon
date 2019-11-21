@@ -1,6 +1,8 @@
-# pokermon-app
+# pokemon-app
 
 ## Project setup
+Install all dependencies required by using
+
 ```
 yarn install
 ```
