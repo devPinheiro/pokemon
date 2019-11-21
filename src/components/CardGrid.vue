@@ -1,35 +1,104 @@
 <template>
   <div class="block sm:w-4/5">
     <div class="grid lg:h-80">
-      <Card v-for="card in cards.cards" :key="card.id">
+      <app-card v-for="(card,id) in pageOfItems" :key="id">
         <img class="w-full" :src="card.imageUrl" alt="Sunset in the mountains" />
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">{{ card.name }}</div>
+          <div class="font-bold text-xl mb-2">{{ card.types + '' }}</div>
         </div>
-      </Card>
+      </app-card>
     </div>
 
     <div class="flex pt-10">
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-auto"
-        type="button"
-      >Prev</button>
-
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-auto"
-        type="button"
-      >Next</button>
+      <jw-pagination
+        :pageSize="20"
+        :items="filteredPokemonCards"
+        @changePage="onChangePage"
+        :disableDefaultStyles="true"
+        :styles="customStyles"
+      ></jw-pagination>
     </div>
   </div>
 </template>
 
 <script>
 import Card from "@/components/Card.vue";
+import JwPagination from "jw-vue-pagination";
+
+const customStyles = {
+  ul: {
+    display: "flex"
+  },
+  li: {
+    display: "inline-block",
+    border: "1px solid rgba(109, 109, 109, 0.22)"
+  },
+  a: {
+    color: "blue",
+    padding: "10px 15px"
+  }
+};
 
 export default {
-  props: ["cards"],
+  data() {
+    return {
+      // holds the card items per page
+      pageOfItems: [],
+      // custom pagination button styling
+      customStyles
+    };
+  },
+  props: ["cards", "rarityProp", "setProp", "typeProp"],
   components: {
-    Card
+    "app-card": Card,
+    "jw-pagination": JwPagination
+  },
+  methods: {
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
+    },
+    // check if pokemon rarity in the rarity filterItem array exists
+    pokemonPassesRarityFilter(card) {
+      if (!this.rarityProp.length) {
+        return true;
+      } else {
+        return this.rarityProp.find(rarity => card.rarity === rarity);
+      }
+    },
+
+    // check if pokemon set in the set filterItem array exists
+    pokemonPassesSetFilter(card) {
+      if (!this.setProp.length) {
+        return true;
+      } else {
+        return this.setProp.find(set => card.set === set);
+      }
+    },
+    // check if pokemon types in the types filterItem array exists
+    pokemonPassesTypeFilter(card) {
+      if (!this.typeProp.length) {
+        return true;
+      } else {
+         let cardType = `${card.types}`;
+         let matched = true;
+         this.typeProp.forEach(type => {
+           if(cardType.indexOf(type) === -1){
+             matched = false;
+           }
+         });
+         return matched
+      }
+    }
+  },
+  computed: {
+    filteredPokemonCards() {
+      return this.cards
+        .filter(this.pokemonPassesRarityFilter)
+        .filter(this.pokemonPassesSetFilter)
+        .filter(this.pokemonPassesTypeFilter);
+    }
   }
 };
 </script>
