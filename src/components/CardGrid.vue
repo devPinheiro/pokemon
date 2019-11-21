@@ -1,13 +1,16 @@
 <template>
   <div class="block sm:w-4/5">
-    <div class="grid lg:h-80">
+    <div >
+      <div class="grid lg:h-80" v-if="pageOfItems.length"> 
       <app-card v-for="(card,id) in pageOfItems" :key="id">
         <img class="w-full" :src="card.imageUrl" alt="Sunset in the mountains" />
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">{{ card.name }}</div>
-          <div class="font-bold text-xl mb-2">{{ card.types + '' }}</div>
         </div>
       </app-card>
+      </div>
+      <div class="w-full text-center" v-else-if="cards.length"><p class="text-2xl"> No result found</p></div>
+      <div class="w-full text-center" v-else><p class="text-2xl"> Loading...</p></div>
     </div>
 
     <div class="flex pt-10">
@@ -15,7 +18,6 @@
         :pageSize="20"
         :items="filteredPokemonCards"
         @changePage="onChangePage"
-        :disableDefaultStyles="true"
         :styles="customStyles"
       ></jw-pagination>
     </div>
@@ -37,6 +39,9 @@ const customStyles = {
   a: {
     color: "blue",
     padding: "10px 15px"
+  },
+  disabled: {
+    display: "none !important"
   }
 };
 
@@ -93,6 +98,9 @@ export default {
     }
   },
   computed: {
+    /**
+     * create an array of filtered card baseed on the filter group
+     */
     filteredPokemonCards() {
       return this.cards
         .filter(this.pokemonPassesRarityFilter)
@@ -103,7 +111,20 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+.disabled {
+  display: none !important;
+}
+
+.pagination > li > a:focus {
+  background: rgb(7, 120, 226);
+  color: #fff;
+}
+
+.pagination > li > a:hover {
+  background: rgb(229, 230, 231);
+  color: rgb(7, 120, 226);;
+}
 .grid {
   display: grid;
   grid-template-columns: 1fr;
