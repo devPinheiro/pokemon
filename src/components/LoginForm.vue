@@ -63,7 +63,7 @@ export default {
       password: ""
     };
   },
-  // add validation rules for email and password fields
+  // add validation rules for username and password fields
   validations: {
     username: {
       required
